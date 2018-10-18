@@ -25,5 +25,3 @@ app.use(function(req, res, next){
 consign().include('app').into(app);
 
 module.exports = app;
-
-
