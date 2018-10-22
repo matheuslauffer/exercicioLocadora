@@ -41,30 +41,38 @@ CREATE TABLE IF NOT EXISTS `teste4all`.`Copia` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE IF NOT EXISTS `teste4all`.`Loca` (
-  `Cliente_idCliente` INT(11) NOT NULL,
-  `Copia_idCopia` INT(11) NOT NULL,
-  `idLocacao` INT(11) NOT NULL AUTO_INCREMENT,
-  INDEX `fk_Cliente_has_Copia_Copia1_idx` (`Copia_idCopia` ASC) VISIBLE,
-  INDEX `fk_Cliente_has_Copia_Cliente1_idx` (`Cliente_idCliente` ASC) VISIBLE,
-  PRIMARY KEY (`idLocacao`),
-  CONSTRAINT `fk_Cliente_has_Copia_Cliente1`
-    FOREIGN KEY (`Cliente_idCliente`)
-    REFERENCES `teste4all`.`Cliente` (`idCliente`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Cliente_has_Copia_Copia1`
-    FOREIGN KEY (`Copia_idCopia`)
-    REFERENCES `teste4all`.`Copia` (`idCopia`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_unicode_ci;
-
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-SELECT * FROM cliente;
+#ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
+
+INSERT INTO filme(Titulo, Diretor) VALUES('TROPA DE ELITE', 'JOSÉ PADILHA');
+INSERT INTO filme(Titulo, Diretor) VALUES('CIDADE DE DEUS', 'FERNANDO MEIRELLES');
+INSERT INTO filme(Titulo, Diretor) VALUES('O HOMEM QUE COPIAVA', 'JORGE FURTADO');
+INSERT INTO filme(Titulo, Diretor) VALUES('OS VINGADORES', 'ANTHONY RUSSO');
+INSERT INTO filme(Titulo, Diretor) VALUES('TROPA DE ELITE', 'JOSÉ PADILHA');
+INSERT INTO filme(Titulo, Diretor) VALUES('V DE VINGANÇA', 'JAMES MCTEIGUE');
+
+INSERT INTO copia(Filme, Disponivel) VALUES(1, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(1, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(1, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(2, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(2, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(2, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(3, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(3, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(3, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(4, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(4, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(4, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(5, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(5, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(5, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(6, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(6, TRUE);
+INSERT INTO copia(Filme, Disponivel) VALUES(6, TRUE);
+
+SELECT filme.Titulo FROM filme INNER JOIN copia on filme.idFilme = copia.Filme WHERE copia.Disponivel = true group by Titulo;
+SELECT * FROM filme WHERE Titulo = 'TROPA DE ELITE';
+SELECT * FROM copia
