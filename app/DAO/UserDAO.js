@@ -1,7 +1,10 @@
+//Objeto de conexão do usuário com o banco de dados
 function UserDAO(connection){
     this._connection = connection;
 }
 
+//método criador de usuário.
+//envia como resposta o status da inserção
 UserDAO.prototype.createUser = function(user, res){
     var nome = this._connection.escape(user.nome);
     var email = this._connection.escape(user.email);
@@ -16,6 +19,9 @@ UserDAO.prototype.createUser = function(user, res){
     });
 }
 
+//método de login do usuário
+//seta a sessão para autenticação de usuário
+//envia como resposta o status da busca
 UserDAO.prototype.autenticaUsuario = function(user, req, res){
     var email = this._connection.escape(user.email);
     var senha = this._connection.escape(user.senha);

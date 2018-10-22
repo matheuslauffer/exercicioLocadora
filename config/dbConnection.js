@@ -1,3 +1,4 @@
+//arquivo de configuração com o banco de dados
 function dbConnection(){
   var mysql = require('mysql');
 
