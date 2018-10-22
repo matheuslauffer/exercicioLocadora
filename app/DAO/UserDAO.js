@@ -33,6 +33,7 @@ UserDAO.prototype.autenticaUsuario = function(user, req, res){
             req.session.logado = true;
             req.session.nome = result[0].Nome;
             req.session.email = result[0].Email;
+            req.session.id = result[0].idCliente;
             console.log(req.session);
             res.status(200).json(result);
         }

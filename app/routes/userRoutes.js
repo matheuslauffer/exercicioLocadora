@@ -9,8 +9,9 @@ module.exports = function(application){
         application.app.controllers.users.logar(application, req, res);
     });
 //rota de logout. Não recebe parâmetros de entrada
-    application.post('/logout', function(req, res){
-        req.session.destroy();
+    application.get('/logout/:id', function(req, res){
+        if(req.params.id == req.session.id)
+            req.session.destroy();
         res.send(req.session);
     });
 }
